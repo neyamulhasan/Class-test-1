@@ -22,7 +22,15 @@ $task = $res->fetch_assoc();
 ?>
 
 <h2>Edit Task</h2>
-<form>
-    
+<form method="post">
+    Title: <input name="title" value="<?= htmlspecialchars($task['title']) ?>"><br>
+    Description: <input name="description" value="<?= htmlspecialchars($task['description']) ?>"><br>
+    Status: 
+    <select name="status">
+        <option value="pending" <?= $task['status']=='pending'?'selected':'' ?>>Pending</option>
+        <option value="done" <?= $task['status']=='done'?'selected':'' ?>>Done</option>
+    </select><br>
+    Tag: <input name="tags" value="<?= $task['tags'] ?>"><br>
+    <button type="submit">Update</button>
 </form>
 <a href="index.php">Back to list</a>
